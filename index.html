@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage & Threads | Authentic Vintage Clothing & Footwear</title>
+    <meta name="description" content="Discover curated 60s, 70s, and 80s vintage garments, genuine leather footwear, and rare retro accessories hand-selected for timeless style.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Paper Grain Texture Overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="brand-logo">
+                <div class="brand-emblem">H</div>
+                <div class="brand-text">
+                    <span class="brand-title">Heritage & Threads</span>
+                    <span class="brand-subtitle">Est. Vintage Garments</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#catalog" class="nav-link">Clothes</a></li>
+                    <li><a href="#catalog" class="nav-link">Shoes</a></li>
+                    <li><a href="#catalog" class="nav-link">Accessories</a></li>
+                    <li><a href="#catalog" class="nav-link">Curated Era</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search retro catalog..." aria-label="Search product catalog" />
+                </div>
+                <button id="cartToggleBtn" class="cart-toggle-btn" aria-label="View Shopping Cart">
+                    <span>🛍️ Cart</span>
+                    <span id="cartCountBadge" class="cart-count-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-card">
+                <img src="assets/hero_banner.jpg" alt="Vintage clothing store collection" class="hero-bg-img" />
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="hero-tag">✦ Authentic 1960s–1980s Collection ✦</span>
+                    <h1 class="hero-title">Timeless Craft,<br>Retro Soul.</h1>
+                    <p class="hero-description">
+                        Step into a bygone era of premium leather jackets, handcrafted boots, and nostalgic garments. Hand-inspected, rare vintage originals built to endure.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#catalog" class="btn btn-primary">Explore Catalog</a>
+                        <a href="#catalog" class="btn btn-secondary">Rare Finds</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Props Bar -->
+            <div class="value-props-bar">
+                <div class="prop-item">
+                    <span class="prop-icon">⚜️</span>
+                    <div>
+                        <div class="prop-title">100% Authentic Vintage</div>
+                        <div class="prop-subtitle">Curated & verified by experts</div>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <span class="prop-icon">🌿</span>
+                    <div>
+                        <div class="prop-title">Sustainable Fashion</div>
+                        <div class="prop-subtitle">Give classic garments new life</div>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <span class="prop-icon">🚚</span>
+                    <div>
+                        <div class="prop-title">Free Shipping over $150</div>
+                        <div class="prop-subtitle">Worldwide insured delivery</div>
+                    </div>
+                </div>
+                <div class="prop-item">
+                    <span class="prop-icon">📱</span>
+                    <div>
+                        <div class="prop-title">Scan & Pay QR Checkout</div>
+                        <div class="prop-subtitle">Fast & safe mobile payments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retro Ornament Line -->
+    <div class="container">
+        <div class="retro-divider">✦ ❖ ✦</div>
+    </div>
+
+    <!-- Catalog Section -->
+    <section id="catalog" class="catalog-section">
+        <div class="container">
+            <div class="catalog-header">
+                <h2 class="section-title">The Vintage Vault</h2>
+                <p class="section-subtitle">Browse through hand-selected original garments, footwear, and accessories from iconic decades.</p>
+            </div>
+
+            <!-- Category Filters & Sort Bar -->
+            <div class="filter-bar">
+                <div id="categoryTabs" class="category-tabs">
+                    <!-- Category buttons rendered dynamically in JS -->
+                </div>
+
+                <div class="sort-group">
+                    <label for="sortSelect" class="sort-label">Sort By:</label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="featured">Featured Curations</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productGrid" class="product-grid">
+                <!-- Product cards rendered dynamically in JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div id="productModalBackdrop" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-card">
+            <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close modal">✕</button>
+            
+            <div class="modal-gallery">
+                <img id="modalMainImg" src="" alt="" class="modal-main-img" />
+            </div>
+
+            <div class="modal-info">
+                <div>
+                    <div id="modalCategory" class="card-category-era"></div>
+                    <h2 id="modalTitle" class="modal-title"></h2>
+                </div>
+
+                <div class="modal-price-row">
+                    <span id="modalPrice" class="modal-price"></span>
+                    <span class="badge badge-condition">Hand-Inspected</span>
+                </div>
+
+                <p id="modalDesc" class="modal-desc"></p>
+
+                <!-- Size Picker -->
+                <div class="option-group">
+                    <span class="option-label">Select Size:</span>
+                    <div id="modalSizePicker" class="size-picker"></div>
+                </div>
+
+                <!-- Color Picker -->
+                <div class="option-group">
+                    <span class="option-label">Color Finish:</span>
+                    <div id="modalColorPicker" class="color-picker"></div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="option-group">
+                    <span class="option-label">Quantity:</span>
+                    <div class="qty-picker">
+                        <button id="modalQtyMinus" class="qty-btn">-</button>
+                        <input type="text" id="modalQtyInput" class="qty-input" value="1" readonly />
+                        <button id="modalQtyPlus" class="qty-btn">+</button>
+                    </div>
+                </div>
+
+                <!-- Spec Details List -->
+                <ul id="modalDetailsList" class="modal-details-list"></ul>
+
+                <button id="modalAddToCartBtn" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                    <span>Add to Vintage Cart</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div id="cartDrawerBackdrop" class="cart-drawer-backdrop" aria-hidden="true">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <h3 class="cart-title">Your Vintage Cart</h3>
+                <button id="cartCloseBtn" class="modal-close-btn" style="position: static;" aria-label="Close cart">✕</button>
+            </div>
+
+            <div id="cartItemsList" class="cart-items-list">
+                <!-- Cart items rendered dynamically in JS -->
+            </div>
+
+            <div class="cart-footer">
+                <!-- Coupon Input -->
+                <div class="coupon-row">
+                    <input type="text" id="couponInput" class="coupon-input" placeholder="Promo code (e.g. VINTAGE10)" />
+                    <button id="applyCouponBtn" class="btn btn-secondary" style="padding: 0.5rem 0.9rem;">Apply</button>
+                </div>
+
+                <!-- Financial Summaries -->
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div id="cartDiscountRow" class="summary-row" style="display: none; color: var(--color-olive);">
+                    <span>Promo Discount:</span>
+                    <span id="cartDiscount">-$0.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Estimated Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+
+                <button id="checkoutBtn" class="btn btn-primary" style="width: 100%;">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Screen Overlay -->
+    <div id="checkoutView" class="checkout-view">
+        <div class="container">
+            <div class="checkout-header">
+                <div class="brand-logo">
+                    <div class="brand-emblem">H</div>
+                    <div>
+                        <h2 style="font-family: var(--font-heading); font-size: 1.4rem;">Checkout & Payment</h2>
+                        <span style="font-size: 0.8rem; color: var(--color-brown-light);">Secure order transaction</span>
+                    </div>
+                </div>
+                <button id="closeCheckoutBtn" class="btn btn-outline">← Back to Store</button>
+            </div>
+
+            <!-- Checkout Form & Payment Grid -->
+            <div id="checkoutForm" class="checkout-grid">
+                <!-- Customer Information -->
+                <div class="checkout-box">
+                    <h3 class="form-title">1. Shipping Address</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" value="Eleanor" required />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" value="Vance" required />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" value="eleanor.vance@vintage.com" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Street Address</label>
+                        <input type="text" class="form-control" value="742 Evergreen Vintage Way" required />
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control" value="Portland" required />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Postal Code</label>
+                            <input type="text" class="form-control" value="97201" required />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Selection & QR Code Scan -->
+                <div class="checkout-box">
+                    <h3 class="form-title">2. Select Payment Method</h3>
+                    
+                    <div class="payment-selector">
+                        <div class="payment-opt active" data-method="qr">
+                            <div class="payment-opt-icon">📱</div>
+                            <div style="font-weight: 700; font-size: 0.9rem;">Scan QR Code</div>
+                            <div style="font-size: 0.75rem; color: var(--color-brown-light);">Mobile App / UPI</div>
+                        </div>
+                        <div class="payment-opt" data-method="card">
+                            <div class="payment-opt-icon">💳</div>
+                            <div style="font-weight: 700; font-size: 0.9rem;">Credit Card</div>
+                            <div style="font-size: 0.75rem; color: var(--color-brown-light);">Visa / Mastercard</div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic QR Code Payment Container -->
+                    <div id="qrContainer" class="qr-payment-container">
+                        <span style="font-size: 0.85rem; font-weight: 600; color: var(--color-brown-faded);">
+                            Scan with your phone's payment app
+                        </span>
+                        
+                        <!-- Canvas Box where QR code is drawn -->
+                        <div id="qrCanvasBox" class="qr-box"></div>
+
+                        <div id="qrTimer" class="qr-timer">⏱️ QR Code expires in 10:00</div>
+
+                        <p style="font-size: 0.78rem; color: var(--color-brown-light); line-height: 1.4;">
+                            Encodes Order Total & Merchant Security ID.<br>
+                            Click below after scanning to verify payment.
+                        </p>
+
+                        <button id="simulatePaymentBtn" class="btn btn-primary simulate-payment-btn">
+                            ✓ Confirm Payment Received
+                        </button>
+                    </div>
+
+                    <!-- Order Total Summary -->
+                    <div style="margin-top: 1.5rem; border-top: 1px dashed var(--color-border-dark); padding-top: 1rem;">
+                        <div class="summary-row">
+                            <span>Order Subtotal:</span>
+                            <span id="checkoutSummarySubtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total Due:</span>
+                            <span id="checkoutSummaryTotal" style="color: var(--color-terracotta);">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receipt Confirmation Container (Displayed post payment) -->
+            <div id="orderConfirmationView" class="order-confirmation" style="display: none;">
+                <!-- Confirmation details injected dynamically in JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 class="footer-brand-title">Heritage & Threads</h3>
+                    <p class="footer-desc">
+                        Dedicated to sourcing authentic vintage apparel, footwear, and accessories from classic eras. Quality garments built with character and timeless craftsmanship.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/a_r.shahan" target="_blank" rel="noopener noreferrer" class="social-link" title="Follow @a_r.shahan on Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                            <span>@a_r.shahan</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Categories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#catalog" class="footer-link">Leather Jackets</a></li>
+                        <li><a href="#catalog" class="footer-link">Prairie Dresses</a></li>
+                        <li><a href="#catalog" class="footer-link">Craftsman Boots</a></li>
+                        <li><a href="#catalog" class="footer-link">Classic Sunglasses</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Customer Care</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Sizing & Fit Guide</a></li>
+                        <li><a href="#" class="footer-link">Vintage Care Guide</a></li>
+                        <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                        <li><a href="https://instagram.com/a_r.shahan" target="_blank" rel="noopener noreferrer" class="footer-link">Instagram (@a_r.shahan)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Vintage Gazette</h4>
+                    <p style="font-size: 0.85rem; color: var(--color-border); margin-bottom: 0.85rem;">
+                        Subscribe to get notified when rare estate collections drop.
+                    </p>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="email" placeholder="Your email..." class="form-control" style="font-size: 0.85rem;" />
+                        <button class="btn btn-primary" style="padding: 0.5rem 0.8rem;">Join</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Heritage & Threads. All Rights Reserved.</span>
+                <span>Follow us on Instagram: <a href="https://instagram.com/a_r.shahan" target="_blank" rel="noopener noreferrer" style="color: var(--color-mustard); text-decoration: underline; font-weight: 600;">@a_r.shahan</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/qrcode.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
